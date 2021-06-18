@@ -26,7 +26,9 @@ type WIFI = Wifi<
 )]
 const APP: () = {
     struct Resources {
-        wifi: WIFI,
+        // wifi: WIFI,
+        cs: PB6<Output<PushPull>>,
+        spi: Spi<SPI3, (PB3<Alternate<AF6>>, PB4<Alternate<AF6>>, PB5<Alternate<AF6>>)>,
     }
 
     #[init(
@@ -54,12 +56,12 @@ const APP: () = {
         let sck = gpiob.pb3.into_alternate_af6();
         let miso = gpiob.pb4.into_alternate_af6();
         let mosi = gpiob.pb5.into_alternate_af6();
-        let cs = gpiob.pb6.into_push_pull_output();
+        let mut cs = gpiob.pb6.into_push_pull_output();
         let ready = gpiob.pb7.into_pull_down_input();
         let reset = gpiob.pb8.into_push_pull_output();
         let gpio0 = gpiob.pb9.into_push_pull_output();
 
-        let spi = Spi::spi3(
+        let mut spi = Spi::spi3(
             dp.SPI3,
             (sck, miso, mosi),
             Mode {
@@ -79,7 +81,9 @@ const APP: () = {
         cx.spawn.once_after_init().unwrap();
 
         init::LateResources {
-            wifi: Wifi::new(spi, cs, ready, reset, gpio0, delay).unwrap(),
+            // wifi: Wifi::new(spi, cs, ready, reset, gpio0, delay).unwrap(),
+            cs,
+            spi,
         }
     }
 
@@ -90,15 +94,19 @@ const APP: () = {
         loop {}
     }
 
-    #[task(resources = [wifi])]
+    #[task(resources = [])]
     fn once_after_init(cx: once_after_init::Context) {
-        let mac_addr = cx.resources.wifi.get_mac_address().unwrap();
-        defmt::info!("mac address: {:?}", mac_addr);
+        // let mac_addr = cx.resources.wifi.get_mac_address().unwrap();
+        // defmt::info!("mac address: {:?}", mac_addr);
     }
 
-    #[task(schedule = [every_10_ms])]
+    #[task(schedule = [every_10_ms], resources = [cs, spi])]
     fn every_10_ms(cx: every_10_ms::Context) {
         cx.schedule.every_10_ms(cx.scheduled + PERIOD.cycles()).unwrap();
+        
+        cx.resources.cs.set_low().ok();
+        cx.resources.spi.write(&[0x42]).unwrap();
+        cx.resources.cs.set_high().ok();
 
         // defmt::info!("supposed to be every 10ms");
     }
