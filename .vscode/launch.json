@@ -1,0 +1,324 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'testsuite'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=testsuite"
+                ],
+                "filter": {
+                    "name": "testsuite",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'test'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=test",
+                    "--package=testsuite"
+                ],
+                "filter": {
+                    "name": "test",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'messing-around-rtic'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "messing-around-rtic",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'messing-around-rtic'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=messing-around-rtic",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "messing-around-rtic",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'messing-around-rtic'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=messing-around-rtic",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "messing-around-rtic",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'format'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=format",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "format",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'format'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=format",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "format",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'overflow'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=overflow",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "overflow",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'overflow'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=overflow",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "overflow",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'panic'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=panic",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "panic",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'panic'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=panic",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "panic",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'hello'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=hello",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "hello",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'hello'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=hello",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "hello",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'bitfield'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bitfield",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "bitfield",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'bitfield'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=bitfield",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "bitfield",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'levels'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=levels",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "levels",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'levels'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=levels",
+                    "--package=messing-around-rtic"
+                ],
+                "filter": {
+                    "name": "levels",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
